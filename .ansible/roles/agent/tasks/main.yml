@@ -1,0 +1,47 @@
+---
+- name: updating apt
+  apt: upgrade=dist update_cache=yes
+- name: Installing dependancies
+  apt: name={{ item }} state=latest update_cache=yes
+  with_items:
+  - build-essential
+  - automake
+  - libpng12-dev
+  - libsdl2-dev
+  - libopenal-dev
+  - libphysfs-dev
+  - libvorbis-dev
+  - libtheora-dev
+  - libglc-dev
+  - libglew1.5-dev
+  - libxrandr-dev
+  - zip
+  - unzip
+  - libqt5opengl5-dev
+  - libssl-dev
+  - qtscript5-dev
+  - qt5-default
+
+- name: Install git
+  apt: name={{ item}} state=latest
+  with_items:
+  - git-core
+
+- name: Install checkinstall and related utilities
+  apt: name={{ item }} state=latest
+  with_items:
+  - autoconf
+  - libtool
+  - pkg-config
+  - libcurl4-openssl-dev
+  - intltool
+  - libxml2-dev
+  - libgtk2.0-dev
+  - libnotify-dev
+  - libglib2.0-dev
+  - libevent-dev
+  - checkinstall
+
+
+- git: repo=https://github.com/Warzone2100/warzone2100.git dest=/vagrant/warzone2100
+- shell: chown vagrant:vagrant /vagrant -Rf
