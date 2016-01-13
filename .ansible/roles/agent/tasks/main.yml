@@ -43,5 +43,4 @@
   - checkinstall
 
 
-- git: repo=https://github.com/Warzone2100/warzone2100.git dest=/vagrant/warzone2100
-- shell: chown vagrant:vagrant /vagrant -Rf
+- git: repo=https://github.com/Warzone2100/warzone2100.git dest=/{{ clone_destination }}/warzone2100
